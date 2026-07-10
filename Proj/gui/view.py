@@ -52,7 +52,7 @@ class Window(QMainWindow):
 
                             
                                 """)
-
+        self.le1 = QLineEdit(self)
 
         #QWidgets
         self.widget_image = QWidget()
