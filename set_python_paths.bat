@@ -1,0 +1,9 @@
+@echo off
+
+if defined PYTHONPATH set _OLD_PYHON_PATH=%PYTHONPATH%
+
+set PYTHONPATH=%CD%;%CD%;%_OLD_PYHON_PATH%
+
+set _OLD_PYHON_PATH=
+
+echo PYTHONPATH set to %PYTHONPATH%
