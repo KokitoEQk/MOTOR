@@ -1,8 +1,8 @@
 import sys
 from PyQt5 import QtWidgets
 
-from gui.view import Window
-from gui.controller import controller
+from MOTOR.Proj.gui.view import Window
+from MOTOR.Proj.gui.controller import controller
 
 
 
