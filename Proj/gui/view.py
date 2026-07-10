@@ -52,8 +52,8 @@ class Window(QMainWindow):
 
                             
                                 """)
-        self.le1 = QLineEdit(self)
-
+        self.le_R = QLineEdit(self)
+        self.le_S = QLineEdit(self)
         #QWidgets
         self.widget_image = QWidget()
         self.widget_image.setStyleSheet("""
@@ -79,6 +79,15 @@ class Window(QMainWindow):
             font-size: 16px;
             """)
         
+        self.lbl_speed = QLabel("SPEED")
+        self.lbl_speed.setStyleSheet("""
+            background-color: #323432;
+            color: #FFFFFF;
+            font-family: Titilium;
+            font-size: 16px;
+            border-color: beige;
+            padding: 6px;
+            """)
         
 
         #Hbox1
@@ -91,15 +100,20 @@ class Window(QMainWindow):
         hbox1 = QHBoxLayout()
         hbox1.addWidget(self.btn_move)
         hbox1.addWidget(self.btn_position_traker)
+        hbox2 = QHBoxLayout()
+        hbox2.addWidget(self.btn_reset)
+        hbox2.addWidget(self.le_S)
+        hbox2.addWidget(self.lbl_speed)
         #Vbox1
         vbox = QVBoxLayout()
-        vbox.addWidget(self.btn_reset)
         vbox.addWidget(self.lbl_test)
+
         vbox.addWidget(self.pixmap)
         #Page_layout
 
         vbox.addStretch(2)
         page_layout.addLayout(hbox)
+        page_layout.addLayout(hbox2)
         page_layout.addLayout(vbox)
         page_layout.addLayout(hbox1)
         return page
