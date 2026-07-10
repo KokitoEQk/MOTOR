@@ -37,14 +37,14 @@ class controller:
         self.r = self.view.le_R.text
         self.speed = self.view.le_S.text
         self.view.lbl_test.setText("Motor is moving")
-        controls.motor_revolution(self.r)
+        controls.motor_revolution((360/self.r))
         controls.motor_speed(int(self.speed))
         controls.motor_move()
         return self.r, self.speed
        
     def motor_revolution(self):
         controls.motor_revolution(self.r)
-        self.view.lbl_test.setText("Set revolutions")
+        self.view.lbl_test.setText("Set revolutions: {self.r}")
         
     def motor_speed(self):
         controls.motor_speed(self.speed)
