@@ -10,9 +10,9 @@ class controller:
     def __init__(self, view:Window):
         self.view = view
        
-        self.rev:float = 0.0
-        self.degrees:int =0
-        self.speed:int = 0
+        self.rev = 0
+        self.degree = 0
+        self.speed = 0
         
         # Start Button
         self.view.btn_start.clicked.connect(self.motor_power)
@@ -43,9 +43,11 @@ class controller:
         
         self.view.lbl_test.setText("Position_Traker reset")
     def motor_move(self):
-        self.degrees = self.view.le_R.text 
-        self.rev = self.degrees/360
-        self.speed = self.view.le_S.text
+        self.view.GIf_movie.start()
+        self.degree = self.view.le_R.text() 
+        self.rev = int(self.degree)/360
+        self.view.lbl_test.setText(f"DEGREES:{self.rev}")
+        self.speed = self.view.le_S.text()
         self.view.lbl_test.setText("Motor is moving")
         return self.rev, self.speed
        

@@ -44,7 +44,7 @@ class Window(QMainWindow):
         self.btn_move = QPushButton("MOVE_MOTOR")
         self.btn_position_traker = QPushButton("POSITION TRAKER")
         #Gif Movie
-        script_dir = "C:\Appl\Proj\gui"
+        script_dir = r"C:\Appl\Proj\gui"
         root_gif1 = os.path.join(script_dir, "motor_spinning.gif")
         self.movieScr = QLabel()
         self.GIf_movie = QMovie(root_gif1)
@@ -58,7 +58,11 @@ class Window(QMainWindow):
                             
                                 """)
         self.le_R = QLineEdit(self)
+        self.le_R.setText("0")
+
         self.le_S = QLineEdit(self)
+        self.le_S.setText("0")
+
         #QWidgets
         self.widget_image = QWidget()
         self.widget_image.setStyleSheet("""
@@ -66,7 +70,7 @@ class Window(QMainWindow):
                 """)
 
         #Qlable
-        self.lbl_RPM = QLabel("RPM")
+        self.lbl_RPM = QLabel("Degrees")
         self.lbl_RPM.setStyleSheet("""
             background-color: #323432;
             color: #FFFFFF;
@@ -99,7 +103,7 @@ class Window(QMainWindow):
         hbox = QHBoxLayout()
         hbox.addStretch()
         hbox.addWidget(self.btn_start)
-        hbox.addWidget(self.le)
+        hbox.addWidget(self.le_R)
         hbox.addWidget(self.lbl_RPM)
        
         hbox1 = QHBoxLayout()
