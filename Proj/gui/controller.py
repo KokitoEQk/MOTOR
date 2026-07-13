@@ -1,10 +1,8 @@
 from gui.view import Window 
-import time
-from PyQt5 import (QtCore,QtGui)
-import glob
-import contextlib
 
-from PIL import Image
+import os
+import tkinter as tk
+from PIL import Image, ImageTk, ImageSequence
 
 
 class controller:
@@ -12,7 +10,8 @@ class controller:
     def __init__(self, view:Window):
         self.view = view
        
-        self.r:float = 0.0
+        self.rev:float = 0.0
+        self.degrees:int =0
         self.speed:int = 0
         
         # Start Button
@@ -26,22 +25,29 @@ class controller:
         #Position traker enable button
         self.view.btn_position_traker.clicked.connect(self.motor_position_traker)
         #Revolution set
+
+
         
+        self.view.movieScr.setMovie(self.view.GIf_movie)
+        self.view.GIf_movie.start()
+        self.view.GIf_movie.stop()
 
     def motor_power(self):
        
         self.view.lbl_test.setText("STARTING...")
+        self.view.GIf_movie.start()
     def controller_reset(self):
-        
+        self.view.GIf_movie.stop()
         self.view.lbl_test.setText("Controller reset")
     def motor_position_traker(self):
         
         self.view.lbl_test.setText("Position_Traker reset")
     def motor_move(self):
-        self.r = self.view.le_R.text
+        self.degrees = self.view.le_R.text 
+        self.rev = self.degrees/360
         self.speed = self.view.le_S.text
         self.view.lbl_test.setText("Motor is moving")
-        return self.r, self.speed
+        return self.rev, self.speed
        
     def motor_revolution(self):
         self.view.lbl_test.setText("Set revolutions")
@@ -49,24 +55,10 @@ class controller:
     def motor_speed(self):
         self.view.lbl_test.setText("Set speed")
 
-fp_in = ".png"
-fp_out = "/path/to/image.gif"
-
-# use exit stack to automatically close opened images
-# with contextlib.ExitStack() as stack:
-
-#     # lazily load images
-#     imgs = (stack.enter_context(Image.open(f))
-#             for f in sorted(glob.glob(fp_in)))
-
-#     # extract  first image from iterator
-#     img = next(imgs)
-
-#     # https://pillow.readthedocs.io/en/stable/handbook/image-file-formats.html#gif
-#     img.save(fp=fp_out, format='GIF', append_images=imgs,
-#              save_all=True, duration=200, loop=0)
        
-    
+
+
+
         
 
         

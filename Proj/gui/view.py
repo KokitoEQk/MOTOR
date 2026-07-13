@@ -1,7 +1,7 @@
 import sys
 from PyQt5.QtWidgets import (QMainWindow ,QWidget, QToolTip, QLabel, QPushButton, QApplication, QLineEdit, QInputDialog, QHBoxLayout, QVBoxLayout)
-from PyQt5.QtGui import (QFont, QPalette, QColor,QPixmap, QIcon)
-
+from PyQt5.QtGui import (QMovie)
+import os
 from PyQt5 import QtWidgets
 
 
@@ -14,6 +14,7 @@ class Window(QMainWindow):
         Makes new page
         
         """
+
         super().__init__()
         self.setWindowTitle("Window for motor")
         self.setMinimumSize(400,400)
@@ -42,10 +43,12 @@ class Window(QMainWindow):
         self.btn_reset = QPushButton("RESET")
         self.btn_move = QPushButton("MOVE_MOTOR")
         self.btn_position_traker = QPushButton("POSITION TRAKER")
-        #QPixmaps
-        pixmap = QPixmap("motor_spinning.gif")
-        self.pixmap = QLabel()
-        self.pixmap.setPixmap(pixmap)
+        #Gif Movie
+        script_dir = "C:\Appl\Proj\gui"
+        root_gif1 = os.path.join(script_dir, "motor_spinning.gif")
+        self.movieScr = QLabel()
+        self.GIf_movie = QMovie(root_gif1)
+       
         
         #LineEdit 1
         self.le = QLineEdit(self)
@@ -110,7 +113,7 @@ class Window(QMainWindow):
         vbox = QVBoxLayout()
         vbox.addWidget(self.lbl_test)
 
-        vbox.addWidget(self.pixmap)
+        vbox.addWidget(self.movieScr)
         #Page_layout
 
         vbox.addStretch(2)
