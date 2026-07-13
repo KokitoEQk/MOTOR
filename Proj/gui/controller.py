@@ -1,7 +1,11 @@
-from MOTOR.Proj.gui.view import Window 
+from gui.view import Window 
 import time
 from PyQt5 import (QtCore,QtGui)
-from src import controls
+import glob
+import contextlib
+
+from PIL import Image
+
 
 class controller:
 
@@ -25,30 +29,42 @@ class controller:
         
 
     def motor_power(self):
-        controls.motor_power("True")
+       
         self.view.lbl_test.setText("STARTING...")
     def controller_reset(self):
-        controls.controller_reset()
+        
         self.view.lbl_test.setText("Controller reset")
     def motor_position_traker(self):
-        controls.motor_position_tracker("True")
+        
         self.view.lbl_test.setText("Position_Traker reset")
     def motor_move(self):
         self.r = self.view.le_R.text
         self.speed = self.view.le_S.text
         self.view.lbl_test.setText("Motor is moving")
-        controls.motor_revolution((360/self.r))
-        controls.motor_speed(int(self.speed))
-        controls.motor_move()
         return self.r, self.speed
        
     def motor_revolution(self):
-        controls.motor_revolution(self.r)
-        self.view.lbl_test.setText("Set revolutions: {self.r}")
+        self.view.lbl_test.setText("Set revolutions")
         
     def motor_speed(self):
-        controls.motor_speed(self.speed)
         self.view.lbl_test.setText("Set speed")
+
+fp_in = ".png"
+fp_out = "/path/to/image.gif"
+
+# use exit stack to automatically close opened images
+# with contextlib.ExitStack() as stack:
+
+#     # lazily load images
+#     imgs = (stack.enter_context(Image.open(f))
+#             for f in sorted(glob.glob(fp_in)))
+
+#     # extract  first image from iterator
+#     img = next(imgs)
+
+#     # https://pillow.readthedocs.io/en/stable/handbook/image-file-formats.html#gif
+#     img.save(fp=fp_out, format='GIF', append_images=imgs,
+#              save_all=True, duration=200, loop=0)
        
     
         

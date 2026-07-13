@@ -7,6 +7,8 @@ from PyQt5 import QtWidgets
 
 
 class Window(QMainWindow):
+
+    
     def __init__(self):
         """
         Makes new page
@@ -41,7 +43,7 @@ class Window(QMainWindow):
         self.btn_move = QPushButton("MOVE_MOTOR")
         self.btn_position_traker = QPushButton("POSITION TRAKER")
         #QPixmaps
-        pixmap = QPixmap("CAR.png")
+        pixmap = QPixmap("motor_spinning.gif")
         self.pixmap = QLabel()
         self.pixmap.setPixmap(pixmap)
         
