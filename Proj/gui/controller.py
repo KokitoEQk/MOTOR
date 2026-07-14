@@ -26,7 +26,14 @@ class controller:
         self.view.btn_reset.clicked.connect(self.controller_reset)
         
         #Motor_Move
-        self.view.btn_move.clicked.connect(self.motor_move)
+        self.motor_speed()
+        if(int(self.speed) < 30):
+
+            self.view.btn_move.clicked.connect(self.motor_move)
+            
+        else:
+            self.view.lbl_test.setText("Set speed under 30")
+        
         #Position traker enable button
         self.view.btn_position_traker.clicked.connect(self.motor_position_traker)
         #Revolution set
@@ -47,13 +54,17 @@ class controller:
     def motor_position_traker(self):
         
         self.view.lbl_test.setText("Position_Traker reset")
+    
+    def motor_speed(self):
+        return self.speed
     def motor_move(self):
         self.view.GIf_movie.start()
         self.degree = self.view.le_R.text() 
         self.rev = int(self.degree)/360
         self.view.lbl_test.setText(f"DEGREES:{self.rev}")
         
-        self.speed = self.view.le_S.text()
+        
+        
         if(int(self.speed) < 30):
 
             self.view.lbl_test.setText("Motor is moving")
@@ -83,7 +94,7 @@ class controller:
             font-weight: bold;
             border-style: solid;
             border-width: 3px;
-            
+            outline: none;
             
                              """)       
         else:
@@ -93,7 +104,7 @@ class controller:
             font-weight: bold;
             border-style: solid;
             border-width: 3px;
-            
+            outline: none;
                              """)       
     
 
